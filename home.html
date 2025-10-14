@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务列表 - 朋友圈转发管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miniprogram-container">
+        <!-- 统计概览 -->
+        <div class="bg-white mx-3 mt-3 rounded-xl shadow-sm p-3">
+            <div class="grid grid-cols-3 gap-3">
+                <div class="text-center">
+                    <div class="text-xl font-bold text-blue-600">3</div>
+                    <div class="text-xs text-gray-500">今日任务</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl font-bold text-green-600">2</div>
+                    <div class="text-xs text-gray-500">已完成</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl font-bold text-orange-600">1</div>
+                    <div class="text-xs text-gray-500">待完成</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 今日任务列表 -->
+        <div class="px-3 py-2">
+            <h2 class="text-base font-semibold text-gray-800 mb-3">
+                <i class="fas fa-calendar-day mr-2 text-blue-600"></i>
+                今日任务
+            </h2>
+        </div>
+
+        <!-- 任务卡片1 - 未完成 -->
+        <div class="bg-white mx-3 mb-3 rounded-xl shadow-sm p-4 fade-in" id="task-weekend-promotion">
+            <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                    <h3 class="font-bold text-base">周末大促销活动</h3>
+                    <p class="text-sm text-gray-600 mt-1">转发促销推文到朋友圈</p>
+                </div>
+                <span class="bg-orange-100 text-orange-600 px-2 py-1 rounded-lg text-xs font-medium">未完成</span>
+            </div>
+            <div class="bg-orange-50 rounded-lg px-3 py-2 mb-3">
+                <div class="flex items-center text-sm text-orange-600">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>截止时间：今日 18:00</span>
+                </div>
+            </div>
+            <!-- 推文内容预览 -->
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+                <div class="flex items-start space-x-3">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=60&h=60&fit=crop&crop=center" 
+                         alt="促销活动" class="w-15 h-15 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm">🎉 周末特惠！全场8折起</h4>
+                        <p class="text-xs text-gray-600 mt-1">精选商品限时优惠，错过再等一年！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推荐文案 -->
+            <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h5 class="font-semibold text-blue-800 text-xs mb-1">推荐转发文案：</h5>
+                        <p class="text-xs text-blue-700">"周末好去处！我们超市正在举办大促销活动，全场8折起，品质保证，价格实惠！大家快来抢购吧！🛒✨"</p>
+                    </div>
+                    <button class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-xs ml-2">
+                        <i class="fas fa-copy mr-1"></i>复制
+                    </button>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="flex space-x-2">
+                <button class="flex-1 bg-blue-600 text-white py-2 px-3 rounded-lg text-sm font-medium">
+                    <i class="fas fa-share mr-1"></i>
+                    立即转发
+                </button>
+                <button class="bg-gray-100 text-gray-600 py-2 px-3 rounded-lg text-sm" onclick="window.location.href='submit.html'">
+                    <i class="fas fa-camera mr-1"></i>
+                    提交凭证
+                </button>
+            </div>
+        </div>
+
+        <!-- 任务卡片2 - 已完成 -->
+        <div class="bg-white mx-3 mb-3 rounded-xl shadow-sm p-4 fade-in">
+            <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                    <h3 class="font-bold text-base">新品上市推广</h3>
+                    <p class="text-sm text-gray-600 mt-1">转发新品视频到朋友圈</p>
+                </div>
+                <span class="bg-green-100 text-green-600 px-2 py-1 rounded-lg text-xs font-medium">已完成</span>
+            </div>
+            <div class="bg-green-50 rounded-lg px-3 py-2 mb-3">
+                <div class="flex items-center text-sm text-green-600">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>完成时间：今日 14:30</span>
+                </div>
+            </div>
+            <!-- 视频内容预览 -->
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=100%&h=100&fit=crop&crop=center" 
+                         alt="新品视频" class="w-full h-24 rounded-lg object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="bg-black bg-opacity-50 rounded-full p-2">
+                            <i class="fas fa-play text-white text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+                        2:30
+                    </div>
+                </div>
+                <h4 class="font-semibold text-gray-800 mt-2 text-sm">🌟 全新有机蔬菜系列上市</h4>
+                <p class="text-xs text-gray-600 mt-1">新鲜直达，健康生活从选择开始</p>
+            </div>
+
+            <!-- 审核状态 -->
+            <div class="bg-green-50 rounded-lg p-3 mb-3">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                    <span class="text-green-800 font-semibold text-sm">审核通过</span>
+                    <span class="text-green-600 text-xs ml-2">管理员已确认转发</span>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="flex space-x-2">
+                <button class="flex-1 bg-gray-100 text-gray-400 py-2 px-3 rounded-lg text-sm font-medium" disabled>
+                    <i class="fas fa-check mr-1"></i>
+                    已完成
+                </button>
+                <button class="bg-gray-100 text-gray-600 py-2 px-3 rounded-lg text-sm">
+                    <i class="fas fa-eye mr-1"></i>
+                    查看详情
+                </button>
+            </div>
+        </div>
+
+        <!-- 任务卡片3 - 待审核 -->
+        <div class="bg-white mx-3 mb-3 rounded-xl shadow-sm p-4 fade-in">
+            <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                    <h3 class="font-bold text-base">节日促销活动</h3>
+                    <p class="text-sm text-gray-600 mt-1">转发节日促销海报</p>
+                </div>
+                <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg text-xs font-medium">待审核</span>
+            </div>
+            <div class="bg-blue-50 rounded-lg px-3 py-2 mb-3">
+                <div class="flex items-center text-sm text-blue-600">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>提交时间：今日 16:20</span>
+                </div>
+            </div>
+            <!-- 海报内容预览 -->
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=100%&h=100&fit=crop&crop=center" 
+                     alt="节日促销海报" class="w-full h-24 rounded-lg object-cover">
+                <h4 class="font-semibold text-gray-800 mt-2 text-sm">🎊 节日特惠大促销</h4>
+                <p class="text-xs text-gray-600 mt-1">限时优惠，错过再等一年！</p>
+            </div>
+
+            <!-- 审核状态 -->
+            <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                <div class="flex items-center">
+                    <i class="fas fa-hourglass-half text-blue-600 mr-2"></i>
+                    <span class="text-blue-800 font-semibold text-sm">等待审核</span>
+                    <span class="text-blue-600 text-xs ml-2">管理员正在审核您的转发凭证</span>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="flex space-x-2">
+                <button class="flex-1 bg-gray-100 text-gray-400 py-2 px-3 rounded-lg text-sm font-medium" disabled>
+                    <i class="fas fa-hourglass-half mr-1"></i>
+                    等待审核
+                </button>
+                <button class="bg-gray-100 text-gray-600 py-2 px-3 rounded-lg text-sm">
+                    <i class="fas fa-eye mr-1"></i>
+                    查看凭证
+                </button>
+            </div>
+        </div>
+
+
+        <!-- 底部间距 -->
+        <div class="h-20"></div>
+    </div>
+
+    <script>
+        // 处理URL参数，定位到特定任务
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const taskId = urlParams.get('task');
+            
+            if (taskId) {
+                const taskElement = document.getElementById(`task-${taskId}`);
+                if (taskElement) {
+                    // 滚动到对应任务并高亮显示
+                    taskElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // 添加高亮效果
+                    taskElement.style.border = '2px solid #3b82f6';
+                    taskElement.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.3)';
+                    
+                    // 3秒后移除高亮效果
+                    setTimeout(() => {
+                        taskElement.style.border = '';
+                        taskElement.style.boxShadow = '';
+                    }, 3000);
+                }
+            }
+        });
+
+        // 复制文案功能
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('button') && e.target.closest('button').textContent.includes('复制')) {
+                const text = "周末好去处！我们超市正在举办大促销活动，全场8折起，品质保证，价格实惠！大家快来抢购吧！🛒✨";
+                navigator.clipboard.writeText(text).then(() => {
+                    // 显示复制成功提示
+                    const button = e.target.closest('button');
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check mr-1"></i>已复制';
+                    button.classList.add('bg-green-100', 'text-green-800');
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.classList.remove('bg-green-100', 'text-green-800');
+                    }, 2000);
+                });
+            }
+        });
+
+        // 转发功能
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('button') && e.target.closest('button').textContent.includes('立即转发')) {
+                alert('正在跳转到微信推文页面...');
+            }
+        });
+    </script>
+</body>
+</html>

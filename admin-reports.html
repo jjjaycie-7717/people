@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报表生成 - 管理后台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miniprogram-container">
+        <!-- 导航栏 -->
+        <div class="navbar" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">
+            <div class="flex items-center justify-between w-full">
+                <h1 class="text-lg font-bold">
+                    <i class="fas fa-file-excel mr-2"></i>
+                    报表生成
+                </h1>
+                <button class="btn-primary text-xs px-3 py-2" onclick="generateReport()">
+                    <i class="fas fa-magic mr-1"></i>
+                    生成报表
+                </button>
+            </div>
+        </div>
+
+        <!-- 报表配置 -->
+        <div class="bg-white mx-4 mt-4 rounded-lg shadow-sm p-4">
+            <h3 class="font-semibold text-gray-800 mb-4">
+                <i class="fas fa-cog mr-2 text-blue-600"></i>
+                报表配置
+            </h3>
+            
+            <!-- 时间范围 -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">时间范围</label>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm">今日</button>
+                    <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">本周</button>
+                    <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">本月</button>
+                    <button class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">自定义</button>
+                </div>
+            </div>
+
+            <!-- 报表类型 -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">报表类型</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="reportType" value="summary" class="mr-3" checked>
+                        <div>
+                            <div class="font-medium text-gray-800">汇总报表</div>
+                            <div class="text-sm text-gray-500">整体数据概览</div>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="reportType" value="detail" class="mr-3">
+                        <div>
+                            <div class="font-medium text-gray-800">详细报表</div>
+                            <div class="text-sm text-gray-500">员工详细数据</div>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="reportType" value="department" class="mr-3">
+                        <div>
+                            <div class="font-medium text-gray-800">部门报表</div>
+                            <div class="text-sm text-gray-500">按部门统计</div>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="reportType" value="task" class="mr-3">
+                        <div>
+                            <div class="font-medium text-gray-800">任务报表</div>
+                            <div class="text-sm text-gray-500">任务完成情况</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 导出格式 -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">导出格式</label>
+                <div class="flex space-x-3">
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="exportFormat" value="excel" class="mr-3" checked>
+                        <div class="flex items-center">
+                            <i class="fas fa-file-excel text-green-600 mr-2"></i>
+                            <span class="font-medium text-gray-800">Excel</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="exportFormat" value="pdf" class="mr-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-600 mr-2"></i>
+                            <span class="font-medium text-gray-800">PDF</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="exportFormat" value="csv" class="mr-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-csv text-blue-600 mr-2"></i>
+                            <span class="font-medium text-gray-800">CSV</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 报表预览 -->
+        <div class="mx-4 mt-4">
+            <h3 class="font-semibold text-gray-800 mb-3">
+                <i class="fas fa-eye mr-2 text-green-600"></i>
+                报表预览
+            </h3>
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-file-alt text-4xl mb-3"></i>
+                    <p>选择报表类型和时间范围后，将显示报表预览</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史报表 -->
+        <div class="mx-4 mt-4">
+            <h3 class="font-semibold text-gray-800 mb-3">
+                <i class="fas fa-history mr-2 text-purple-600"></i>
+                历史报表
+            </h3>
+            
+            <div class="space-y-3">
+                <!-- 报表记录1 -->
+                <div class="bg-white rounded-lg shadow-sm p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-file-excel text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">本月汇总报表</h4>
+                                <p class="text-sm text-gray-500">2024年12月 | Excel格式</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="btn-secondary text-xs px-3 py-1">
+                                <i class="fas fa-download mr-1"></i>
+                                下载
+                            </button>
+                            <button class="btn-secondary text-xs px-3 py-1">
+                                <i class="fas fa-eye mr-1"></i>
+                                预览
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 报表记录2 -->
+                <div class="bg-white rounded-lg shadow-sm p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-file-pdf text-red-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">本周详细报表</h4>
+                                <p class="text-sm text-gray-500">2024年12月第3周 | PDF格式</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="btn-secondary text-xs px-3 py-1">
+                                <i class="fas fa-download mr-1"></i>
+                                下载
+                            </button>
+                            <button class="btn-secondary text-xs px-3 py-1">
+                                <i class="fas fa-eye mr-1"></i>
+                                预览
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 报表记录3 -->
+                <div class="bg-white rounded-lg shadow-sm p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-file-csv text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">部门统计报表</h4>
+                                <p class="text-sm text-gray-500">2024年12月 | CSV格式</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="btn-secondary text-xs px-3 py-1">
+                                <i class="fas fa-download mr-1"></i>
+                                下载
+                            </button>
+                            <button class="btn-secondary text-xs px-3 py-1">
+                                <i class="fas fa-eye mr-1"></i>
+                                预览
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 报表模板 -->
+        <div class="mx-4 mt-4">
+            <h3 class="font-semibold text-gray-800 mb-3">
+                <i class="fas fa-template mr-2 text-orange-600"></i>
+                报表模板
+            </h3>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white rounded-lg shadow-sm p-4 text-center">
+                    <i class="fas fa-file-alt text-3xl text-blue-600 mb-2"></i>
+                    <h4 class="font-semibold text-gray-800 mb-1">标准模板</h4>
+                    <p class="text-sm text-gray-500 mb-3">包含基础统计信息</p>
+                    <button class="btn-secondary text-xs px-3 py-1">
+                        <i class="fas fa-download mr-1"></i>
+                        下载模板
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-4 text-center">
+                    <i class="fas fa-chart-bar text-3xl text-green-600 mb-2"></i>
+                    <h4 class="font-semibold text-gray-800 mb-1">图表模板</h4>
+                    <p class="text-sm text-gray-500 mb-3">包含图表和可视化</p>
+                    <button class="btn-secondary text-xs px-3 py-1">
+                        <i class="fas fa-download mr-1"></i>
+                        下载模板
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部间距 -->
+        <div class="h-20"></div>
+    </div>
+
+    <script>
+        // 生成报表
+        function generateReport() {
+            const reportType = document.querySelector('input[name="reportType"]:checked').value;
+            const exportFormat = document.querySelector('input[name="exportFormat"]:checked').value;
+            
+            // 显示加载状态
+            const btn = document.querySelector('.btn-primary');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<div class="loading mr-2"></div>生成中...';
+            btn.disabled = true;
+            
+            // 模拟生成过程
+            setTimeout(() => {
+                alert(`报表生成成功！\n类型：${reportType}\n格式：${exportFormat}`);
+                
+                // 恢复按钮状态
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                // 添加到历史报表
+                addToHistory(reportType, exportFormat);
+            }, 2000);
+        }
+
+        // 添加到历史报表
+        function addToHistory(reportType, exportFormat) {
+            const historyContainer = document.querySelector('.space-y-3');
+            const newReport = document.createElement('div');
+            newReport.className = 'bg-white rounded-lg shadow-sm p-4';
+            
+            const formatIcon = exportFormat === 'excel' ? 'fas fa-file-excel text-green-600' : 
+                              exportFormat === 'pdf' ? 'fas fa-file-pdf text-red-600' : 
+                              'fas fa-file-csv text-blue-600';
+            
+            const formatBg = exportFormat === 'excel' ? 'bg-green-100' : 
+                             exportFormat === 'pdf' ? 'bg-red-100' : 
+                             'bg-blue-100';
+            
+            newReport.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 ${formatBg} rounded-full flex items-center justify-center">
+                            <i class="${formatIcon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${getReportTypeName(reportType)}</h4>
+                            <p class="text-sm text-gray-500">${new Date().toLocaleDateString()} | ${exportFormat.toUpperCase()}格式</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="btn-secondary text-xs px-3 py-1">
+                            <i class="fas fa-download mr-1"></i>
+                            下载
+                        </button>
+                        <button class="btn-secondary text-xs px-3 py-1">
+                            <i class="fas fa-eye mr-1"></i>
+                            预览
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            historyContainer.insertBefore(newReport, historyContainer.firstChild);
+        }
+
+        // 获取报表类型名称
+        function getReportTypeName(type) {
+            const names = {
+                'summary': '汇总报表',
+                'detail': '详细报表',
+                'department': '部门报表',
+                'task': '任务报表'
+            };
+            return names[type] || '未知报表';
+        }
+
+        // 时间范围切换
+        document.querySelectorAll('.mb-4 .flex.space-x-2 button').forEach(button => {
+            button.addEventListener('click', function() {
+                // 移除所有按钮的激活状态
+                document.querySelectorAll('.mb-4 .flex.space-x-2 button').forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-gray-600');
+                });
+                
+                // 激活当前按钮
+                this.classList.remove('bg-gray-100', 'text-gray-600');
+                this.classList.add('bg-blue-600', 'text-white');
+            });
+        });
+
+        // 下载模板
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-secondary') && e.target.closest('.btn-secondary').textContent.includes('下载模板')) {
+                alert('模板下载成功！');
+            }
+        });
+
+        // 下载历史报表
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-secondary') && e.target.closest('.btn-secondary').textContent.includes('下载')) {
+                alert('报表下载成功！');
+            }
+        });
+
+        // 预览报表
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-secondary') && e.target.closest('.btn-secondary').textContent.includes('预览')) {
+                alert('打开报表预览窗口');
+            }
+        });
+    </script>
+</body>
+</html>

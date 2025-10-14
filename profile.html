@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 朋友圈转发管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miniprogram-container">
+        <!-- 用户信息卡片 -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 mx-4 mt-4 rounded-lg shadow-lg p-6 text-white">
+            <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face" 
+                         alt="头像" class="w-14 h-14 rounded-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold">张三</h2>
+                    <p class="text-sm opacity-90">工号：EMP001</p>
+                    <p class="text-sm opacity-90">部门：市场部</p>
+                </div>
+                <button class="bg-white bg-opacity-20 rounded-full p-2">
+                    <i class="fas fa-edit text-white"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 任务统计 -->
+        <div class="mx-4 mt-4">
+            <h3 class="font-semibold text-gray-800 mb-3">
+                <i class="fas fa-chart-pie mr-2 text-blue-600"></i>
+                任务统计
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">本月完成</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">完成率</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">连续完成</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">A+</div>
+                    <div class="stat-label">评级</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最近任务 -->
+        <div class="mx-4 mt-4">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-gray-800">
+                    <i class="fas fa-history mr-2 text-green-600"></i>
+                    最近任务
+                </h3>
+                <button class="text-blue-600 text-sm font-medium">
+                    查看全部 <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-2">
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=40&h=40&fit=crop&crop=center" 
+                                 alt="任务" class="w-10 h-10 rounded-lg object-cover">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 text-sm">周末大促销</h4>
+                                <p class="text-xs text-gray-500">已完成</p>
+                            </div>
+                        </div>
+                        <span class="status-badge status-completed text-xs">已完成</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=40&h=40&fit=crop&crop=center" 
+                                 alt="任务" class="w-10 h-10 rounded-lg object-cover">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 text-sm">新品推广</h4>
+                                <p class="text-xs text-gray-500">已完成</p>
+                            </div>
+                        </div>
+                        <span class="status-badge status-completed text-xs">已完成</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=40&h=40&fit=crop&crop=center" 
+                                 alt="任务" class="w-10 h-10 rounded-lg object-cover">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 text-sm">节日促销</h4>
+                                <p class="text-xs text-gray-500">待审核</p>
+                            </div>
+                        </div>
+                        <span class="status-badge status-reviewing text-xs">待审核</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能菜单 -->
+        <div class="mx-4 mt-4">
+            <h3 class="font-semibold text-gray-800 mb-3">
+                <i class="fas fa-cog mr-2 text-gray-600"></i>
+                功能设置
+            </h3>
+            
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-bell text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">消息通知</h4>
+                            <p class="text-sm text-gray-500">任务提醒和审核结果</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-line text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">数据统计</h4>
+                            <p class="text-sm text-gray-500">查看详细的任务数据</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-download text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">导出数据</h4>
+                            <p class="text-sm text-gray-500">导出任务完成记录</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="flex items-center justify-between p-4 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-question-circle text-orange-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">帮助中心</h4>
+                            <p class="text-sm text-gray-500">使用说明和常见问题</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-info-circle text-gray-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">关于我们</h4>
+                            <p class="text-sm text-gray-500">版本信息和联系方式</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退出登录 -->
+        <div class="mx-4 mt-6 mb-20">
+            <button class="w-full py-3 bg-red-50 text-red-600 rounded-lg font-semibold border border-red-200">
+                <i class="fas fa-sign-out-alt mr-2"></i>
+                退出登录
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // 功能菜单点击事件
+        document.querySelectorAll('.bg-white .flex.items-center.justify-between').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                
+                switch(title) {
+                    case '消息通知':
+                        alert('跳转到消息通知设置页面');
+                        break;
+                    case '数据统计':
+                        alert('统计功能已移除');
+                        break;
+                    case '导出数据':
+                        alert('正在导出数据...');
+                        break;
+                    case '帮助中心':
+                        alert('跳转到帮助中心页面');
+                        break;
+                    case '关于我们':
+                        alert('当前版本：v2.1.0\n开发团队：朋友圈转发管理系统');
+                        break;
+                }
+            });
+        });
+
+        // 退出登录
+        document.querySelector('.bg-red-50').addEventListener('click', function() {
+            if (confirm('确定要退出登录吗？')) {
+                alert('已退出登录');
+                // 这里可以添加实际的退出逻辑
+            }
+        });
+
+        // 编辑个人信息
+        document.querySelector('.bg-white.bg-opacity-20').addEventListener('click', function() {
+            alert('跳转到个人信息编辑页面');
+        });
+
+        // 查看全部任务
+        document.querySelector('.text-blue-600').addEventListener('click', function() {
+            window.location.href = 'home.html';
+        });
+    </script>
+</body>
+</html>
