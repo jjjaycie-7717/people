@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>朋友圈转发管理系统 - 登录</title>
+    <title>超市推广助手 - 微信登录</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -23,14 +23,14 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             padding: 3rem;
-            max-width: 500px;
+            max-width: 400px;
             width: 90%;
             text-align: center;
         }
         
         .logo {
-            font-size: 2.5rem;
-            color: #667eea;
+            font-size: 3rem;
+            color: #07c160;
             margin-bottom: 1rem;
         }
         
@@ -44,128 +44,133 @@
         .subtitle {
             color: #64748b;
             margin-bottom: 2rem;
+            line-height: 1.6;
         }
         
-        .role-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+        .wechat-login-btn {
+            width: 100%;
+            background: #07c160;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
             margin-bottom: 2rem;
         }
         
-        .role-card {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .role-card:hover {
-            border-color: #667eea;
-            background: #f0f4ff;
+        .wechat-login-btn:hover {
+            background: #06ad56;
             transform: translateY(-2px);
         }
         
-        .role-card.selected {
-            border-color: #667eea;
-            background: #f0f4ff;
-        }
-        
-        .role-card i {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-        
-        .role-card h3 {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-        
-        .role-card p {
-            color: #64748b;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        
-        .login-form {
-            margin-top: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        .login-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .login-btn:hover {
-            transform: translateY(-1px);
-        }
-        
-        .login-btn:disabled {
-            opacity: 0.5;
+        .wechat-login-btn:disabled {
+            opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
         
-        .demo-info {
+        .wechat-login-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .login-info {
             background: #f0f4ff;
             border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .login-info h4 {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .login-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+        
+        .login-info ul {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            padding-left: 1.2rem;
+        }
+        
+        .login-info li {
+            margin: 0.3rem 0;
+            line-height: 1.4;
+        }
+        
+        .demo-info {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
             border-radius: 8px;
             padding: 1rem;
-            margin-top: 1.5rem;
             text-align: left;
         }
         
         .demo-info h4 {
-            color: #667eea;
+            color: #ea580c;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .demo-info p {
-            color: #64748b;
+            color: #9a3412;
             font-size: 0.875rem;
             margin: 0.25rem 0;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .loading-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        .loading-content i {
+            font-size: 2rem;
+            color: #07c160;
+            margin-bottom: 1rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         @media (max-width: 768px) {
@@ -174,13 +179,12 @@
                 margin: 1rem;
             }
             
-            .role-cards {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .logo {
+                font-size: 2.5rem;
             }
             
-            .role-card {
-                padding: 1.5rem;
+            .title {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -189,109 +193,156 @@
     <div class="login-container">
         <!-- Logo和标题 -->
         <div class="logo">
-            <i class="fas fa-share-alt"></i>
+            <i class="fab fa-weixin"></i>
         </div>
-        <h1 class="title">朋友圈转发管理系统</h1>
-        <p class="subtitle">请选择您的身份角色</p>
+        <h1 class="title">超市推广助手</h1>
+        <p class="subtitle">朋友圈转发任务管理系统<br>请使用微信授权登录</p>
         
-        <!-- 角色选择 -->
-        <div class="role-cards">
-            <div class="role-card" data-role="employee">
-                <i class="fas fa-user"></i>
-                <h3>员工端</h3>
-                <p>超市员工<br>查看任务、提交凭证</p>
-            </div>
-            <div class="role-card" data-role="admin">
-                <i class="fas fa-cog"></i>
-                <h3>管理后台</h3>
-                <p>运营管理员<br>发布任务、审核管理</p>
-            </div>
-        </div>
+        <!-- 微信登录按钮 -->
+        <button class="wechat-login-btn" id="wechatLoginBtn">
+            <i class="fab fa-weixin"></i>
+            微信授权登录
+        </button>
         
-        <!-- 登录表单 -->
-        <div class="login-form" id="loginForm" style="display: none;">
-            <div class="form-group">
-                <label for="username">用户名</label>
-                <input type="text" id="username" placeholder="请输入用户名">
-            </div>
-            <div class="form-group">
-                <label for="password">密码</label>
-                <input type="password" id="password" placeholder="请输入密码">
-            </div>
-            <button class="login-btn" id="loginBtn">登录</button>
+        <!-- 登录说明 -->
+        <div class="login-info">
+            <h4><i class="fas fa-info-circle"></i>登录说明</h4>
+            <p><strong>登录流程：</strong></p>
+            <ul>
+                <li>点击"微信授权登录"按钮</li>
+                <li>微信会弹出授权页面</li>
+                <li>授权获取您的手机号信息</li>
+                <li>系统根据手机号自动匹配身份</li>
+                <li>登录成功后进入对应系统</li>
+            </ul>
+            <p><strong>身份识别：</strong>系统会根据您的手机号在数据库中的信息，自动识别您是员工还是管理员，无需手动选择。</p>
         </div>
         
         <!-- 演示信息 -->
         <div class="demo-info">
-            <h4><i class="fas fa-info-circle mr-2"></i>演示说明</h4>
-            <p><strong>员工端演示账号：</strong> 员工001 / 123456</p>
-            <p><strong>管理后台演示账号：</strong> 管理员001 / 123456</p>
-            <p><strong>功能说明：</strong> 选择角色后可直接进入对应系统体验完整功能</p>
+            <h4><i class="fas fa-exclamation-triangle"></i>演示说明</h4>
+            <p><strong>注意：</strong>这是演示版本，实际使用时需要配置微信小程序环境</p>
+            <p><strong>演示账号：</strong>点击登录按钮后会自动进入员工端系统</p>
+        </div>
+    </div>
+
+    <!-- 加载遮罩 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <i class="fas fa-spinner"></i>
+            <p>正在授权登录...</p>
         </div>
     </div>
 
     <script>
-        let selectedRole = null;
-        
-        // 角色选择
-        document.querySelectorAll('.role-card').forEach(card => {
-            card.addEventListener('click', function() {
-                // 移除所有选中状态
-                document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
-                
-                // 选中当前卡片
-                this.classList.add('selected');
-                selectedRole = this.getAttribute('data-role');
-                
-                // 显示登录表单
-                document.getElementById('loginForm').style.display = 'block';
-                
-                // 更新表单标题
-                const title = selectedRole === 'employee' ? '员工端登录' : '管理后台登录';
-                document.querySelector('.subtitle').textContent = title;
-            });
-        });
-        
-        // 登录功能
-        document.getElementById('loginBtn').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (!username || !password) {
-                alert('请输入用户名和密码');
-                return;
-            }
-            
+        // 微信登录功能
+        document.getElementById('wechatLoginBtn').addEventListener('click', function() {
             // 显示加载状态
-            this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>登录中...';
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>授权中...';
             this.disabled = true;
             
-            // 模拟登录验证
+            // 显示加载遮罩
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            // 模拟微信授权流程
             setTimeout(() => {
-                // 简单的演示验证
-                if ((selectedRole === 'employee' && username === '员工001' && password === '123456') ||
-                    (selectedRole === 'admin' && username === '管理员001' && password === '123456')) {
-                    
-                    // 登录成功，跳转到对应系统
-                    if (selectedRole === 'employee') {
-                        window.location.href = 'employee-index.html';
-                    } else {
-                        window.location.href = 'admin-index.html';
-                    }
-                } else {
-                    alert('用户名或密码错误，请使用演示账号');
-                    this.innerHTML = '登录';
-                    this.disabled = false;
-                }
-            }, 1500);
+                // 模拟授权成功
+                simulateWechatAuth();
+            }, 2000);
         });
         
-        // 回车登录
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && selectedRole) {
-                document.getElementById('loginBtn').click();
-            }
-        });
+        function simulateWechatAuth() {
+            // 模拟获取用户手机号
+            const mockPhoneNumber = '138****8888';
+            
+            // 模拟后台身份匹配
+            setTimeout(() => {
+                // 这里应该调用后台API，根据手机号查询用户身份
+                // 演示版本直接进入员工端
+                const userRole = determineUserRole(mockPhoneNumber);
+                
+                // 隐藏加载状态
+                document.getElementById('loadingOverlay').style.display = 'none';
+                
+                // 根据身份跳转
+                if (userRole === 'employee') {
+                    window.location.href = 'index.html';
+                } else if (userRole === 'admin') {
+                    window.location.href = 'admin-index.html';
+                } else {
+                    alert('未找到用户信息，请联系管理员');
+                    // 重置按钮状态
+                    document.getElementById('wechatLoginBtn').innerHTML = '<i class="fab fa-weixin"></i>微信授权登录';
+                    document.getElementById('wechatLoginBtn').disabled = false;
+                }
+            }, 1500);
+        }
+        
+        function determineUserRole(phoneNumber) {
+            // 模拟后台数据库查询逻辑
+            // 实际项目中这里应该调用API查询用户身份
+            const mockUsers = {
+                '138****8888': 'employee',
+                '139****9999': 'admin',
+                '137****7777': 'employee'
+            };
+            
+            return mockUsers[phoneNumber] || 'employee'; // 默认员工身份
+        }
+        
+        // 实际微信小程序登录代码示例（注释）
+        /*
+        function realWechatLogin() {
+            // 获取微信登录code
+            wx.login({
+                success: function(res) {
+                    if (res.code) {
+                        // 发送code到后台换取openid和session_key
+                        wx.request({
+                            url: 'https://your-api.com/auth/wechat',
+                            method: 'POST',
+                            data: {
+                                code: res.code
+                            },
+                            success: function(response) {
+                                // 处理登录结果
+                                if (response.data.success) {
+                                    // 获取用户手机号
+                                    wx.getUserProfile({
+                                        desc: '用于身份识别',
+                                        success: function(userRes) {
+                                            // 发送手机号到后台进行身份匹配
+                                            wx.request({
+                                                url: 'https://your-api.com/auth/phone',
+                                                method: 'POST',
+                                                data: {
+                                                    encryptedData: userRes.encryptedData,
+                                                    iv: userRes.iv,
+                                                    sessionKey: response.data.sessionKey
+                                                },
+                                                success: function(phoneRes) {
+                                                    // 根据返回的身份信息跳转
+                                                    if (phoneRes.data.role === 'employee') {
+                                                        wx.navigateTo({
+                                                            url: '/pages/employee/index'
+                                                        });
+                                                    } else {
+                                                        wx.navigateTo({
+                                                            url: '/pages/admin/index'
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        */
     </script>
 </body>
 </html>
