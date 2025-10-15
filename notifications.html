@@ -107,32 +107,13 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-xs text-red-600">✗ 需要重新提交</span>
-                            <button class="text-blue-600 text-xs font-medium">重新提交</button>
+                            <button class="text-blue-600 text-xs font-medium resubmit-btn">重新提交</button>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <!-- 已读消息 - 任务完成统计 -->
-            <div class="notification-item fade-in">
-                <div class="flex items-start space-x-3">
-                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-chart-line text-purple-600"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-semibold text-gray-800">周报统计</h4>
-                            <span class="text-xs text-gray-500">3天前</span>
-                        </div>
-                        <p class="text-sm text-gray-600 mb-2">本周您已完成5个转发任务，完成率100%</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-purple-600">📊 统计报告</span>
-                            <button class="text-blue-600 text-xs font-medium">查看报告</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- 加载更多 -->
@@ -164,6 +145,14 @@
                 const taskId = e.target.getAttribute('data-task');
                 // 跳转到首页并定位到对应任务
                 window.location.href = `home.html?task=${taskId}`;
+            }
+        });
+
+        // 跳转到提交页面
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('resubmit-btn')) {
+                // 跳转到提交页面
+                window.location.href = 'submit.html';
             }
         });
 
